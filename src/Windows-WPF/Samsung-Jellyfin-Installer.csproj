@@ -27,7 +27,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="jellyfin.ico" />
+    <Content Include="..\..\assets\jellyfin.ico" />
     <Content Include="TizenProfile\ca\do_not_delete_me.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
