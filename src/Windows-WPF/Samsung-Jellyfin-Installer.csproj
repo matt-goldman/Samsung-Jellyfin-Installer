@@ -7,7 +7,7 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <UseWPF>true</UseWPF>
-    <ApplicationIcon>jellyfin.ico</ApplicationIcon>
+    <ApplicationIcon>..\..\assets\jellyfin.ico</ApplicationIcon>
     <ApplicationManifest>app.manifest</ApplicationManifest>
     <Platforms>AnyCPU;x64</Platforms>
 	<EnableWindowsTargeting>true</EnableWindowsTargeting>
@@ -19,11 +19,15 @@
   </PropertyGroup>
 
 
-	<ItemGroup>
+  <ItemGroup>
     <None Remove="Localization\Strings.resx~RFce770a.TMP" />
     <None Remove="TizenProfile\author.p12" />
     <None Remove="TizenProfile\ca\do_not_delete_me.txt" />
     <None Remove="TizenProfile\profiles.xml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Shared-Logic\Shared-Logic.csproj" />
   </ItemGroup>
 
   <ItemGroup>

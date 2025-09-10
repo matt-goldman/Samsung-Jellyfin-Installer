@@ -1,0 +1,501 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="DownloadAndInstall" xml:space="preserve">
+    <value>Download &amp; Installer</value>
+  </data>
+  <data name="InstallationFailed" xml:space="preserve">
+    <value>Installationen mislykkedes</value>
+  </data>
+  <data name="InstallationSuccessfulOn" xml:space="preserve">
+    <value>Jellyfin er blevet installeret!</value>
+  </data>
+  <data name="DownloadFailed" xml:space="preserve">
+    <value>Download mislykkedes:</value>
+  </data>
+  <data name="FailedLoadingReleases" xml:space="preserve">
+    <value>Kunne ikke indlæse udgivelser:</value>
+  </data>
+  <data name="PleaseInstallTizen" xml:space="preserve">
+    <value>Tizen CLI er påkrævet, men ikke fundet. Installer venligst Tizen Studio først.</value>
+  </data>
+  <data name="DownloadingPackage" xml:space="preserve">
+    <value>Downloader pakke...</value>
+  </data>
+  <data name="ConnectingToDevice" xml:space="preserve">
+    <value>Forbinder til enhed...</value>
+  </data>
+  <data name="RetrievingDeviceAddress" xml:space="preserve">
+    <value>Henter enhedsadresse...</value>
+  </data>
+  <data name="TvNameNotFound" xml:space="preserve">
+    <value>TV navn kunne ikke findes...</value>
+  </data>
+  <data name="TvDuidNotFound" xml:space="preserve">
+    <value>TV duid kunne ikke findes...</value>
+  </data>
+  <data name="UpdatingCertificateProfile" xml:space="preserve">
+    <value>Opdaterer certifikatprofil...</value>
+  </data>
+  <data name="PackagingWgtWithCertificate" xml:space="preserve">
+    <value>Pakker wgt-filen med certifikat...</value>
+  </data>
+  <data name="InstallationSuccessful" xml:space="preserve">
+    <value>Installation vellykket</value>
+  </data>
+  <data name="InstallingPackage" xml:space="preserve">
+    <value>Installerer pakke på enhed...</value>
+  </data>
+  <data name="InstallationMaybeFailed" xml:space="preserve">
+    <value>Installationen er muligvis mislykket</value>
+  </data>
+  <data name="Output" xml:space="preserve">
+    <value>Output</value>
+  </data>
+  <data name="LoadingReleases" xml:space="preserve">
+    <value>Indlæser udgivelser...</value>
+  </data>
+  <data name="ScanningNetwork" xml:space="preserve">
+    <value>Scanner netværk til Samsung TV...</value>
+  </data>
+  <data name="CheckTizenOS" xml:space="preserve">
+    <value>Kontrollerer Tizen OS-version...</value>
+  </data>
+  <data name="SuccessAuthCode" xml:space="preserve">
+    <value>Godkendelseskode blev opnået</value>
+  </data>
+  <data name="Ready" xml:space="preserve">
+    <value>Klar til brug...</value>
+  </data>
+  <data name="FailedAuthCode" xml:space="preserve">
+    <value>Login blev annulleret eller mislykkedes...</value>
+  </data>
+  <data name="NoDevicesFound" xml:space="preserve">
+    <value>Ingen enheder fundet</value>
+  </data>
+  <data name="OutputDir" xml:space="preserve">
+    <value>Sikring af, at output-mappen eksisterer...</value>
+  </data>
+  <data name="GenPassword" xml:space="preserve">
+    <value>Genererer tilfældig adgangskode...</value>
+  </data>
+  <data name="GenKeyPair" xml:space="preserve">
+    <value>Generering af nøglepar...</value>
+  </data>
+  <data name="CreateAuthorCsr" xml:space="preserve">
+    <value>Opretter forfatter-CSR...</value>
+  </data>
+  <data name="CreateDistributorCSR" xml:space="preserve">
+    <value>Generering af distributør-CSR med DUID...</value>
+  </data>
+  <data name="PostAuthorCSR" xml:space="preserve">
+    <value>Sender til Samsungs forfatter-slutpunkt...</value>
+  </data>
+  <data name="PostDistributorCSR" xml:space="preserve">
+    <value>Sender til Samsung-distributør...</value>
+  </data>
+  <data name="CreateNewCertificates" xml:space="preserve">
+    <value>Opretter de signerede P12-filer...</value>
+  </data>
+  <data name="MovingP12Files" xml:space="preserve">
+    <value>Kopier filer, der skal bruges i certifikat-manager...</value>
+  </data>
+  <data name="SettingCertificateManager" xml:space="preserve">
+    <value>Retter Tizen certifikat manager...</value>
+  </data>
+  <data name="SettingsCaCerts" xml:space="preserve">
+    <value>Indstiller CA-certifikater...</value>
+  </data>
+  <data name="ChooseRelease" xml:space="preserve">
+    <value>Vælg udgivelse...</value>
+  </data>
+  <data name="ChooseVersion" xml:space="preserve">
+    <value>Vælg version...</value>
+  </data>
+  <data name="ChooseTV" xml:space="preserve">
+    <value>Vælg TV...</value>
+  </data>
+  <data name="SelectLanguage" xml:space="preserve">
+    <value>Vælg sprog</value>
+  </data>
+  <data name="SelectCertificate" xml:space="preserve">
+    <value>Vælg certifikat</value>
+  </data>
+  <data name="SelectWGT" xml:space="preserve">
+    <value>Vælg WGT- og/eller TPK-fil(er)</value>
+  </data>
+  <data name="lbl_Release" xml:space="preserve">
+    <value>Frigøre</value>
+  </data>
+  <data name="lbl_Version" xml:space="preserve">
+    <value>Version</value>
+  </data>
+  <data name="lbl_SelectTv" xml:space="preserve">
+    <value>Vælg TV</value>
+  </data>
+  <data name="lbl_Language" xml:space="preserve">
+    <value>Sprog</value>
+  </data>
+  <data name="lbl_CustomWgt" xml:space="preserve">
+    <value>Brugerdefineret WGT</value>
+  </data>
+  <data name="lbl_Settings" xml:space="preserve">
+    <value>Indstillinger</value>
+  </data>
+  <data name="lbl_RememberIp" xml:space="preserve">
+    <value>Husk brugerdefinerede IP'er</value>
+  </data>
+  <data name="lbl_DeletePrevious" xml:space="preserve">
+    <value>Slet den gamle Jellyfin-app</value>
+  </data>
+  <data name="lbl_expires" xml:space="preserve">
+    <value>Udløber</value>
+  </data>
+  <data name="IpWindowTitle" xml:space="preserve">
+    <value>Indtast TV IP</value>
+  </data>
+  <data name="IpWindowDescription" xml:space="preserve">
+    <value>Indtast venligst enhedens IP-adresse:</value>
+  </data>
+  <data name="InvalidDeviceIp" xml:space="preserve">
+    <value>Ugyldig enheds IP eller enhed ikke fundet.</value>
+  </data>
+  <data name="IpNotListed" xml:space="preserve">
+    <value>Min IP er ikke på listen...</value>
+  </data>
+  <data name="lbl_Certifcate" xml:space="preserve">
+    <value>Certifikat</value>
+  </data>
+  <data name="lbl_Other" xml:space="preserve">
+    <value>Ellers</value>
+  </data>
+  <data name="DownloadCompleted" xml:space="preserve">
+    <value>Download fuldført...</value>
+  </data>
+  <data name="NoPackageToInstall" xml:space="preserve">
+    <value>Ingen pakke at installere</value>
+  </data>
+  <data name="NoDeviceSelected" xml:space="preserve">
+    <value>Ingen enhed valgt</value>
+  </data>
+  <data name="UsingCustomWGT" xml:space="preserve">
+    <value>Brug af brugerdefineret WGT-fil</value>
+  </data>
+  <data name="FailedRemoveOld" xml:space="preserve">
+    <value>Kunne ikke fjerne den gamle appversion</value>
+  </data>
+  <data name="FailedRemoveOldExtra" xml:space="preserve">
+    <value>Fjern venligst den gamle Jellyfin-app manuelt fra tv'et</value>
+  </data>
+  <data name="CheckingTizenCli" xml:space="preserve">
+    <value>Tjekker Tizen CLI...</value>
+  </data>
+  <data name="TizenCliFailed" xml:space="preserve">
+    <value>Tizen CLI-installation mislykkedes...</value>
+  </data>
+  <data name="InitializationFailed" xml:space="preserve">
+    <value>Initialisering mislykkedes</value>
+  </data>
+  <data name="DownloadingSetupFile" xml:space="preserve">
+    <value>Downloader installationsprogrammet...</value>
+  </data>
+  <data name="InstallingSetupFile" xml:space="preserve">
+    <value>Installation af Tizen Studio CLI...</value>
+  </data>
+  <data name="InstallingCertificateManager" xml:space="preserve">
+    <value>Installerer Certificate Manager...</value>
+  </data>
+  <data name="InstallingCertificateAddOn" xml:space="preserve">
+    <value>Installation af Certifikathåndtering-tilføjelsesprogram...</value>
+  </data>
+  <data name="CheckingPackageManagerList" xml:space="preserve">
+    <value>Tjekker Tizen-pakkehåndtering</value>
+  </data>
+  <data name="PermissionDenied" xml:space="preserve">
+    <value>Tilladelse nægtet</value>
+  </data>
+  <data name="AdminPrivRequired" xml:space="preserve">
+    <value>Der kræves administratorrettigheder for at oprette mappen. Opret den manuelt, eller kør programmet igen som administrator.</value>
+  </data>
+  <data name="PathLengthWarning" xml:space="preserve">
+    <value>Windows-stilængde overskredet</value>
+  </data>
+  <data name="PathLengthExceeded" xml:space="preserve">
+    <value>Standardstien overstiger Windows-stilængden. Vil du ændre den til C:\Tizen Studio Cli?</value>
+  </data>
+  <data name="lbl_ForceLogin" xml:space="preserve">
+    <value>Tving Samsung-login</value>
+  </data>
+  <data name="DeveloperModeRequired" xml:space="preserve">
+    <value>Samsung TV er ikke i udviklertilstand...</value>
+  </data>
+  <data name="DeveloperIPMismatch" xml:space="preserve">
+    <value>Samsungs IP-adresse for udviklertilstand matcher ikke denne enheds lokale IP-adresse. Vil du fortsætte?</value>
+  </data>
+  <data name="lbl_RTL" xml:space="preserve">
+    <value>Højre-mod-venstre (RTL) læsning</value>
+  </data>
+  <data name="FailedToStopSdbServer" xml:space="preserve">
+    <value>Der kører allerede en SDB-server, den kunne ikke stoppes...</value>
+  </data>
+  <data name="FailedToStopSdbServerTitle" xml:space="preserve">
+    <value>SDB-serveren kunne ikke stoppe!</value>
+  </data>
+  <data name="lbl_JellyfinServer" xml:space="preserve">
+    <value>Adresse</value>
+  </data>
+  <data name="lbl_ModifyConfig" xml:space="preserve">
+    <value>Indstil Jellyfin-konfiguration</value>
+  </data>
+  <data name="ConfigFailure" xml:space="preserve">
+    <value>config.json blev ikke fundet i den udpakkede pakke.</value>
+  </data>
+  <data name="ServerIP" xml:space="preserve">
+    <value>Server IP</value>
+  </data>
+  <data name="ServerPort" xml:space="preserve">
+    <value>Port</value>
+  </data>
+  <data name="Theme" xml:space="preserve">
+    <value>Tema</value>
+  </data>
+  <data name="SelectTheme" xml:space="preserve">
+    <value>Vælg tema</value>
+  </data>
+  <data name="lbl_EnableBackdrops" xml:space="preserve">
+    <value>Aktiver Baggrunde</value>
+  </data>
+  <data name="lbl_EnableThemeSongs" xml:space="preserve">
+    <value>Aktiver temasange</value>
+  </data>
+  <data name="lbl_EnableThemeVideos" xml:space="preserve">
+    <value>Aktiver temavideoer</value>
+  </data>
+  <data name="lbl_BackdropScreensaver" xml:space="preserve">
+    <value>Pauseskærm på baggrund</value>
+  </data>
+  <data name="lbl_DetailsBanner" xml:space="preserve">
+    <value>Detaljer banner</value>
+  </data>
+  <data name="lbl_CinemaMode" xml:space="preserve">
+    <value>Biograftilstand</value>
+  </data>
+  <data name="lbl_NextUpEnabled" xml:space="preserve">
+    <value>Next-up aktiveret</value>
+  </data>
+  <data name="lbl_EnableExternalVideoPlayers" xml:space="preserve">
+    <value>Aktiver eksterne videoafspillere</value>
+  </data>
+  <data name="lbl_SkipIntros" xml:space="preserve">
+    <value>Spring over introer</value>
+  </data>
+  <data name="lbl_AutoPlayNextEpisode" xml:space="preserve">
+    <value>Afspil næste afsnit automatisk</value>
+  </data>
+  <data name="lbl_RememberAudioSelections" xml:space="preserve">
+    <value>Husk lydvalg</value>
+  </data>
+  <data name="lbl_RememberSubtitleSelections" xml:space="preserve">
+    <value>Husk valg af undertekster</value>
+  </data>
+  <data name="lbl_PlayDefaultAudioTrack" xml:space="preserve">
+    <value>Afspil standard lydspor</value>
+  </data>
+  <data name="lbl_SubtitleMode" xml:space="preserve">
+    <value>Underteksttilstand</value>
+  </data>
+  <data name="lbl_AudioLanguagePreference" xml:space="preserve">
+    <value>Lydsprog præference</value>
+  </data>
+  <data name="lbl_SubtitleLanguagePreference" xml:space="preserve">
+    <value>Foretrukket sprog for undertekster</value>
+  </data>
+  <data name="lbl_JellyfinConfig" xml:space="preserve">
+    <value>Jellyfin-konfiguration</value>
+  </data>
+  <data name="SelectSubtitleMode" xml:space="preserve">
+    <value>Vælg underteksttilstand</value>
+  </data>
+  <data name="AudioLanguage" xml:space="preserve">
+    <value>f.eks. en | da | nl</value>
+  </data>
+  <data name="lbl_OpenConfig" xml:space="preserve">
+    <value>Åbn konfig</value>
+  </data>
+  <data name="lbl_ValidateLogin" xml:space="preserve">
+    <value>Valider</value>
+  </data>
+  <data name="lbl_ValidateJellyfin" xml:space="preserve">
+    <value>Valider Jellyfin-server</value>
+  </data>
+  <data name="NoJellyfinServer" xml:space="preserve">
+    <value>Udfyld venligst Jellyfin-serveren først...</value>
+  </data>
+  <data name="JellyfinLoginFailed" xml:space="preserve">
+    <value>Login mislykkedes: Ugyldige loginoplysninger eller serverfejl.</value>
+  </data>
+  <data name="lbl_JellyfinServerApi" xml:space="preserve">
+    <value>API -nøgle</value>
+  </data>
+  <data name="UpdateMode" xml:space="preserve">
+    <value>Opdateringstilstand</value>
+  </data>
+  <data name="lbl_ServerSettings" xml:space="preserve">
+    <value>Serverindstillinger</value>
+  </data>
+  <data name="lbl_BrowserSettings" xml:space="preserve">
+    <value>Browserindstillinger</value>
+  </data>
+  <data name="lbl_UserSettings" xml:space="preserve">
+    <value>Brugerindstillinger</value>
+  </data>
+  <data name="lbl_userAutoLogin" xml:space="preserve">
+    <value>Aktiver automatisk login</value>
+  </data>
+  <data name="lbl_JellyfinUser" xml:space="preserve">
+    <value>Jellyfin-bruger(e)</value>
+  </data>
+  <data name="lbl_FailedUsers" xml:space="preserve">
+    <value>Kunne ikke hente nogen Jellyfin-brugere. Ingen konfigurationsindstillinger vil blive ændret!</value>
+  </data>
+  <data name="lbl_UpdateMode" xml:space="preserve">
+    <value>Vælg, hvad der skal opdateres</value>
+  </data>
+  <data name="lbl_JellyfinAPIKey" xml:space="preserve">
+    <value>Jellyfin API nøgle</value>
+  </data>
+  <data name="lbl_SelectUsers" xml:space="preserve">
+    <value>Vælg bruger(e) til opdatering</value>
+  </data>
+  <data name="lbl_Validation" xml:space="preserve">
+    <value>🍺 Køb mig en øl</value>
+  </data>
+  <data name="btn_Close" xml:space="preserve">
+    <value>Tæt</value>
+  </data>
+  <data name="lbl_easyRight" xml:space="preserve">
+    <value>Det var nemt, ikke?</value>
+  </data>
+  <data name="NoDevicesFoundRetry" xml:space="preserve">
+    <value>Ingen enheder fundet, prøv igen med virtuelt NIC?</value>
+  </data>
+  <data name="RetySearchMsg" xml:space="preserve">
+    <value>Ingen tv'er fundet. Vil du søge igen med virtuelle netværkskort inkluderet i søgningen?</value>
+  </data>
+</root>
