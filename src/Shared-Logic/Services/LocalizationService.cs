@@ -1,11 +1,11 @@
-using Samsung_Jellyfin_Installer.Shared.ViewModels;
 using Samsung_Jellyfin_Installer.Shared.Localization;
+using CommunityToolkit.Mvvm.ComponentModel;
 using System.Globalization;
 using System.Reflection;
 
 namespace Samsung_Jellyfin_Installer.Shared.Services
 {
-    public class LocalizedStrings : ViewModelBase
+    public class LocalizedStrings : ObservableObject
     {
         private static LocalizedStrings? _instance;
         private CultureInfo _currentCulture;
@@ -15,7 +15,7 @@ namespace Samsung_Jellyfin_Installer.Shared.Services
         public CultureInfo CurrentCulture
         {
             get => _currentCulture;
-            private set => SetField(ref _currentCulture, value);
+            private set => SetProperty(ref _currentCulture, value);
         }
 
         private LocalizedStrings()

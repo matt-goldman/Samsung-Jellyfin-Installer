@@ -1,6 +1,7 @@
 using Samsung_Jellyfin_Installer.Converters;
 using Samsung_Jellyfin_Installer.Models;
 using Samsung_Jellyfin_Installer.Views;
+using Samsung_Jellyfin_Installer.Shared.Services;
 using System.Diagnostics;
 using System.IO;
 using System.IO.Compression;
@@ -23,21 +24,25 @@ namespace Samsung_Jellyfin_Installer.Services
         ];
 
         private readonly HttpClient _httpClient;
+        private readonly IDialogService _dialogService;
+        private readonly IUIThreadService _uiThreadService;
         private readonly string _downloadDirectory;
-        private string _installPath;
+        private string? _installPath;
         private const int MaxSafePathLength = 240;
 
         public string? TizenRootPath { get; private set; }
-        public string? TizenCliPath { get; private set; }
+        public string TizenCliPath { get; private set; } = string.Empty;
         public string? TizenSdbPath { get; private set; }
         public string? TizenDataPath { get; private set; }
         public string? TizenCypto { get; private set; }
         public string? TizenPluginPath { get; private set; }
         public string? PackageCertificate { get; set; }
 
-        public TizenInstallerService(HttpClient httpClient)
+        public TizenInstallerService(HttpClient httpClient, IDialogService dialogService, IUIThreadService uiThreadService)
         {
             _httpClient = httpClient;
+            _dialogService = dialogService;
+            _uiThreadService = uiThreadService;
             _httpClient.DefaultRequestHeaders.UserAgent.ParseAdd("SamsungJellyfinInstaller/1.0");
             _downloadDirectory = Path.Combine(
                 Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
@@ -234,7 +239,7 @@ namespace Samsung_Jellyfin_Installer.Services
 
                         if (string.IsNullOrEmpty(selectedCertificate) || selectedCertificate == "Jelly2Sams (default)" || Settings.Default.ForceSamsungLogin)
                         {
-                            SamsungAuth auth = await SamsungLoginService.PerformSamsungLoginAsync();
+                            SamsungAuth auth = await SamsungLoginService.PerformSamsungLoginAsync(_uiThreadService);
                             if (!string.IsNullOrEmpty(auth.access_token))
                             {
 
@@ -436,7 +441,7 @@ namespace Samsung_Jellyfin_Installer.Services
 
             if (users == null || users.Length == 0)
             {
-                MessageBox.Show("lbl_FailedUsers".Localized());
+                await _dialogService.ShowErrorAsync("lbl_FailedUsers".Localized());
                 return Array.Empty<string>();
             }
 
@@ -899,7 +904,7 @@ namespace Samsung_Jellyfin_Installer.Services
                     // Ensure InstallingWindow is properly closed on UI thread
                     if (installingWindow != null)
                     {
-                        Application.Current.Dispatcher.Invoke(() =>
+                        await _uiThreadService.InvokeOnUIThreadAsync(() =>
                         {
                             installingWindow.Close();
                         });

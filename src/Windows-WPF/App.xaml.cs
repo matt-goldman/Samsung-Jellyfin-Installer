@@ -1,6 +1,8 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Samsung_Jellyfin_Installer.Services;
 using Samsung_Jellyfin_Installer.ViewModels;
+using Samsung_Jellyfin_Installer.WPF.Services;
+using Samsung_Jellyfin_Installer.Shared.Services;
 using System.Configuration;
 using System.Diagnostics;
 using System.IO;
@@ -33,9 +35,10 @@ namespace Samsung_Jellyfin_Installer
             });
 
             // Register services
-            services.AddSingleton<IDialogService, DialogService>();
-            services.AddSingleton<ITizenInstallerService, TizenInstallerService>();
-            services.AddSingleton<INetworkService, NetworkService>();
+            services.AddSingleton<Samsung_Jellyfin_Installer.Shared.Services.IDialogService, WpfDialogService>();
+            services.AddSingleton<Samsung_Jellyfin_Installer.Shared.Services.IUIThreadService, WpfUIThreadService>();
+            services.AddSingleton<Samsung_Jellyfin_Installer.Services.ITizenInstallerService, Samsung_Jellyfin_Installer.Services.TizenInstallerService>();
+            services.AddSingleton<Samsung_Jellyfin_Installer.Services.INetworkService, Samsung_Jellyfin_Installer.Services.NetworkService>();
 
             // Register ViewModels
             services.AddSingleton<MainWindowViewModel>();
@@ -61,7 +64,7 @@ namespace Samsung_Jellyfin_Installer
             var configPath = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.PerUserRoamingAndLocal).FilePath;
 
 
-            LocalizedStrings.Instance.ChangeLanguage(savedLanguage);
+            Samsung_Jellyfin_Installer.Services.LocalizedStrings.Instance.ChangeLanguage(savedLanguage);
 
             try
             {

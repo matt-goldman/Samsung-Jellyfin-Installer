@@ -1,4 +1,4 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Samsung_Jellyfin_Installer.Commands;
@@ -38,24 +38,24 @@ namespace Samsung_Jellyfin_Installer.ViewModels
         public ObservableCollection<GitHubRelease> Releases
         {
             get => _releases;
-            private set => SetField(ref _releases, value);
+            private set => SetProperty(ref _releases, value);
         }
         public ObservableCollection<Asset> AvailableAssets
         {
             get => _availableAssets;
-            private set => SetField(ref _availableAssets, value);
+            private set => SetProperty(ref _availableAssets, value);
         }
         public ObservableCollection<NetworkDevice> AvailableDevices
         {
             get => _availableDevices;
-            private set => SetField(ref _availableDevices, value);
+            private set => SetProperty(ref _availableDevices, value);
         }
         public GitHubRelease SelectedRelease
         {
             get => _selectedRelease;
             set
             {
-                if (SetField(ref _selectedRelease, value))
+                if (SetProperty(ref _selectedRelease, value))
                 {
                     AvailableAssets = value != null
                         ? new ObservableCollection<Asset>(value.Assets)
@@ -67,14 +67,14 @@ namespace Samsung_Jellyfin_Installer.ViewModels
         public Asset SelectedAsset
         {
             get => _selectedAsset;
-            set => SetField(ref _selectedAsset, value);
+            set => SetProperty(ref _selectedAsset, value);
         }
         public NetworkDevice? SelectedDevice
         {
             get => _selectedDevice;
             set
             {
-                if (SetField(ref _selectedDevice, value) && value?.IpAddress == "Other")
+                if (SetProperty(ref _selectedDevice, value) && value?.IpAddress == "Other")
                     _ = PromptForManualIp();
             }
         }
@@ -84,7 +84,7 @@ namespace Samsung_Jellyfin_Installer.ViewModels
             get => _isLoading;
             private set
             {
-                if (SetField(ref _isLoading, value))
+                if (SetProperty(ref _isLoading, value))
                 {
                     CommandManager.InvalidateRequerySuggested();
                 }
@@ -95,7 +95,7 @@ namespace Samsung_Jellyfin_Installer.ViewModels
             get => _isLoadingDevices;
             private set
             {
-                if (SetField(ref _isLoadingDevices, value))
+                if (SetProperty(ref _isLoadingDevices, value))
                 {
                     OnPropertyChanged(nameof(EnableDevicesInput));
                     CommandManager.InvalidateRequerySuggested();
@@ -108,7 +108,7 @@ namespace Samsung_Jellyfin_Installer.ViewModels
         public string StatusBar
         {
             get => _statusBar;
-            set => SetField(ref _statusBar, value);
+            set => SetProperty(ref _statusBar, value);
         }
         public string FooterText =>
             $"{Settings.Default.AppVersion} " +

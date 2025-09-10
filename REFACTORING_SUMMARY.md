@@ -26,6 +26,7 @@
 ### Utilities (Some moved, some need refactoring)
 - ✅ `CipherUtil.cs` → `Shared.Utilities.CipherUtil`
 - ✅ `UserAgentProvider.cs` → `Shared.Utilities.UserAgentProvider`
+- ✅ `CsrGenerator.cs` → `Shared.Utilities.CsrGenerator` (Pure crypto utility, no UI dependencies)
 - ⚠️ `ElevatedCommands.cs` → `Shared.Utilities.ElevatedCommands` (Refactored with IStatusReporter interface)
 
 ### Services (Partially moved)
@@ -45,11 +46,12 @@
 - ❌ `SettingsViewModel.cs` - Uses System.Windows and ICommand (WPF version)
 - ❌ `JellyfinConfigViewModel.cs` - Uses System.Windows and ICommand (WPF version)
 
-### Utilities (WPF-specific - remain in WPF project)
-- ❌ `ContentWidthConverter.cs` - WPF converter
-- ❌ `LocalizeExtension.cs` - WPF markup extension
-- ❌ `WebView2Helper.cs` - Windows-specific
-- ❌ `Remove-CsrGenerator.cs` - (not evaluated)
+### Utilities (WPF-specific - properly remain in WPF project)
+- ✅ `ContentWidthConverter.cs` - WPF converter (belongs in UI layer)
+- ✅ `LocalizeExtension.cs` - WPF markup extension (belongs in UI layer)  
+- ✅ `WebView2Helper.cs` - Windows-specific UI utility (belongs in UI layer)
+
+*Note: These are NOT technical debt - they are legitimate UI-layer utilities*
 
 ## 📋 Next Steps Required
 

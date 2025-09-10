@@ -1,25 +1,14 @@
-﻿using System.ComponentModel;
-using System.Runtime.CompilerServices;
+﻿// This ViewModelBase is obsolete - inherit directly from ObservableObject
+// Update ViewModels to inherit from CommunityToolkit.Mvvm.ComponentModel.ObservableObject directly
+
+using CommunityToolkit.Mvvm.ComponentModel;
 
 namespace Samsung_Jellyfin_Installer.ViewModels
 {
-    public class ViewModelBase : INotifyPropertyChanged
+    // Alias for backward compatibility during migration
+    public class ViewModelBase : ObservableObject
     {
-        public event PropertyChangedEventHandler? PropertyChanged;
-
-        protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
-
-        protected bool SetField<T>(ref T field, T value, [CallerMemberName] string? propertyName = null)
-        {
-            if (EqualityComparer<T>.Default.Equals(field, value))
-                return false;
-
-            field = value;
-            OnPropertyChanged(propertyName);
-            return true;
-        }
+        // This class serves as a bridge during the migration to ObservableObject
+        // All WPF ViewModels should eventually inherit directly from ObservableObject
     }
 }

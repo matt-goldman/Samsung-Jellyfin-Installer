@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Samsung_Jellyfin_Installer.Models;
 using Samsung_Jellyfin_Installer.Views;
+using Samsung_Jellyfin_Installer.Shared.Services;
 using System.Diagnostics;
 using System.Net;
 using System.Text.Json;
@@ -11,27 +12,33 @@ using System.Windows;
 
 public class SamsungLoginService
 {
-    private IWebHost _callbackServer;
+    private IWebHost? _callbackServer;
     private const string CallbackUrl = "http://localhost:4794/signin/callback";
     private const string StateValue = "accountcheckdogeneratedstatetext";
+    private readonly IUIThreadService _uiThreadService;
 
-    public Action<SamsungAuth> CallbackReceived;
+    public Action<SamsungAuth>? CallbackReceived;
 
-    public static async Task<SamsungAuth> PerformSamsungLoginAsync()
+    public SamsungLoginService(IUIThreadService uiThreadService)
+    {
+        _uiThreadService = uiThreadService;
+    }
+
+    public static async Task<SamsungAuth> PerformSamsungLoginAsync(IUIThreadService uiThreadService)
     {
         string loginUrl =
             $"https://account.samsung.com/accounts/be1dce529476c1a6d407c4c7578c31bd/signInGate?locale=&clientId=v285zxnl3h&redirect_uri={HttpUtility.UrlEncode(CallbackUrl)}&state={StateValue}&tokenType=TOKEN";
 
-        SamsungAuth authResult = null;
-        SamsungLoginWindow loginWindow = null;
+        SamsungAuth? authResult = null;
+        SamsungLoginWindow? loginWindow = null;
 
-        await Application.Current.Dispatcher.InvokeAsync(() =>
+        await uiThreadService.InvokeOnUIThreadAsync(() =>
         {
             loginWindow = new SamsungLoginWindow(CallbackUrl, StateValue);
             loginWindow.StartLogin(loginUrl);
         });
 
-        var service = new SamsungLoginService();
+        var service = new SamsungLoginService(uiThreadService);
         await service.StartCallbackServer();
 
         service.CallbackReceived = auth =>
@@ -40,16 +47,16 @@ public class SamsungLoginService
             loginWindow?.OnExternalCallback(auth.state, auth.access_token);
         };
 
-        await Application.Current.Dispatcher.InvokeAsync(() =>
+        await uiThreadService.InvokeOnUIThreadAsync(() =>
         {
-            loginWindow.ShowDialog();
+            loginWindow?.ShowDialog();
         });
 
         await service.StopCallbackServer();
 
         Debug.WriteLine(authResult);
 
-        return authResult;
+        return authResult ?? throw new InvalidOperationException("Samsung login was cancelled or failed");
     }
 
     public async Task StartCallbackServer()
@@ -72,7 +79,7 @@ public class SamsungLoginService
                             try
                             {
                                 var auth = JsonSerializer.Deserialize<SamsungAuth>(codeJson);
-                                if (auth != null)
+                                if (auth != null && !string.IsNullOrEmpty(state))
                                 {
                                     auth.state = state; // Inject state manually
 

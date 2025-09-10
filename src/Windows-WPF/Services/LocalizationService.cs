@@ -1,4 +1,4 @@
-﻿using Samsung_Jellyfin_Installer.Localization;
+using Samsung_Jellyfin_Installer.Localization;
 using Samsung_Jellyfin_Installer.ViewModels;
 using System.Globalization;
 using System.Reflection;
@@ -15,7 +15,7 @@ namespace Samsung_Jellyfin_Installer.Services
         public CultureInfo CurrentCulture
         {
             get => _currentCulture;
-            private set => SetField(ref _currentCulture, value);
+            private set => SetProperty(ref _currentCulture, value);
         }
 
         private LocalizedStrings()
