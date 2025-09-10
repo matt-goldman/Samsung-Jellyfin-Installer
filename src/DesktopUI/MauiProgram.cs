@@ -1,8 +1,7 @@
 ﻿using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.DependencyInjection;
-using DesktopUI.Services;
 using Samsung_Jellyfin_Installer.Shared.Services;
 using Samsung_Jellyfin_Installer.Shared.ViewModels;
+using DesktopUI.Services;
 
 namespace DesktopUI;
 
@@ -16,11 +15,10 @@ public static class MauiProgram
 			.ConfigureFonts(fonts =>
 			{
 				fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
+				fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
 			});
 
-		builder.Services.AddMauiBlazorWebView();
-
-		// Register shared services with MAUI implementations
+			// Register shared services with MAUI implementations
 		builder.Services.AddSingleton<IDialogService, MauiDialogService>();
 		builder.Services.AddSingleton<IUIThreadService, MauiUIThreadService>();
 		builder.Services.AddSingleton<ISettingsService, MauiSettingsService>();
@@ -35,7 +33,6 @@ public static class MauiProgram
 		builder.Services.AddTransient<SettingsViewModel>();
 
 #if DEBUG
-		builder.Services.AddBlazorWebViewDeveloperTools();
 		builder.Logging.AddDebug();
 #endif
 
