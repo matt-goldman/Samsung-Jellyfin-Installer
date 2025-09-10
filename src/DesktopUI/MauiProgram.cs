@@ -24,7 +24,7 @@ public static class MauiProgram
 		builder.Services.AddSingleton<ISettingsService, MauiSettingsService>();
 		builder.Services.AddSingleton<IFileDialogService, MauiFileDialogService>();
 		builder.Services.AddSingleton<ILocalizationService, MauiLocalizationService>();
-		builder.Services.AddSingleton<INetworkService, MauiNetworkService>();
+		builder.Services.AddSingleton<INetworkService, Samsung_Jellyfin_Installer.Shared.Services.NetworkService>();
 		builder.Services.AddSingleton<ITizenInstallerService, MauiTizenInstallerService>();
 
 		// Register shared ViewModels

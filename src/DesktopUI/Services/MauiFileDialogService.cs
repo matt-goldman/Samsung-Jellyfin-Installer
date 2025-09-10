@@ -11,10 +11,7 @@ namespace DesktopUI.Services
                 var customFileType = new FilePickerFileType(
                     new Dictionary<DevicePlatform, IEnumerable<string>>
                     {
-                        { DevicePlatform.iOS, new[] { "public.data" } },
-                        { DevicePlatform.Android, new[] { "*/*" } },
                         { DevicePlatform.WinUI, new[] { "*" } },
-                        { DevicePlatform.Tizen, new[] { "*/*" } },
                         { DevicePlatform.macOS, new[] { "public.data" } },
                     });
 

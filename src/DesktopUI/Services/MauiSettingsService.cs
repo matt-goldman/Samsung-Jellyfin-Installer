@@ -6,82 +6,70 @@ namespace DesktopUI.Services
     {
         public T? GetSetting<T>(string key)
         {
-            if (typeof(T) == typeof(string))
+            var type = typeof(T);
+            var underlyingType = Nullable.GetUnderlyingType(type) ?? type;
+
+            try
             {
-                var value = Preferences.Get(key, string.Empty);
-                return (T)(object)value;
+                // Use reflection to call the appropriate Preferences.Get overload
+                var getMethod = typeof(Preferences).GetMethods()
+                    .FirstOrDefault(m => m.Name == "Get" &&
+                                   m.GetParameters().Length == 2 &&
+                                   m.GetParameters()[1].ParameterType == underlyingType);
+
+                if (getMethod != null)
+                {
+                    var defaultValue = underlyingType == typeof(string) ? string.Empty :
+                                     underlyingType == typeof(bool) ? false :
+                                     underlyingType == typeof(int) ? 0 :
+                                     underlyingType == typeof(double) ? 0.0 :
+                                     underlyingType == typeof(float) ? 0.0f :
+                                     underlyingType == typeof(long) ? 0L :
+                                     underlyingType == typeof(DateTime) ? DateTime.MinValue :
+                                     Activator.CreateInstance(underlyingType);
+
+                    var result = getMethod.Invoke(null, new object[] { key, defaultValue! });
+                    return (T?)result;
+                }
             }
-            else if (typeof(T) == typeof(bool))
+            catch
             {
-                var value = Preferences.Get(key, false);
-                return (T)(object)value;
-            }
-            else if (typeof(T) == typeof(int))
-            {
-                var value = Preferences.Get(key, 0);
-                return (T)(object)value;
-            }
-            else if (typeof(T) == typeof(double))
-            {
-                var value = Preferences.Get(key, 0.0);
-                return (T)(object)value;
-            }
-            else if (typeof(T) == typeof(float))
-            {
-                var value = Preferences.Get(key, 0.0f);
-                return (T)(object)value;
-            }
-            else if (typeof(T) == typeof(long))
-            {
-                var value = Preferences.Get(key, 0L);
-                return (T)(object)value;
-            }
-            else if (typeof(T) == typeof(DateTime))
-            {
-                var value = Preferences.Get(key, DateTime.MinValue);
-                return (T)(object)value;
+                // Fallback handled below
             }
 
-            // For complex types, we could use JSON serialization
-            // For now, return default value
+            // Fallback for unsupported types
             return default(T);
         }
 
         public void SetSetting<T>(string key, T value)
         {
-            if (value is string stringValue)
+            if (value == null)
             {
-                Preferences.Set(key, stringValue);
+                Preferences.Remove(key);
+                return;
             }
-            else if (value is bool boolValue)
+
+            var type = value.GetType();
+            var underlyingType = Nullable.GetUnderlyingType(type) ?? type;
+
+            try
             {
-                Preferences.Set(key, boolValue);
+                // Use reflection to call the appropriate Preferences.Set overload
+                var setMethod = typeof(Preferences).GetMethod("Set", new[] { typeof(string), underlyingType });
+                if (setMethod != null)
+                {
+                    setMethod.Invoke(null, new object[] { key, value });
+                }
+                else
+                {
+                    // Fallback to string representation for unsupported types
+                    Preferences.Set(key, value.ToString() ?? string.Empty);
+                }
             }
-            else if (value is int intValue)
+            catch
             {
-                Preferences.Set(key, intValue);
-            }
-            else if (value is double doubleValue)
-            {
-                Preferences.Set(key, doubleValue);
-            }
-            else if (value is float floatValue)
-            {
-                Preferences.Set(key, floatValue);
-            }
-            else if (value is long longValue)
-            {
-                Preferences.Set(key, longValue);
-            }
-            else if (value is DateTime dateTimeValue)
-            {
-                Preferences.Set(key, dateTimeValue);
-            }
-            else
-            {
-                // For complex types, we could use JSON serialization
-                // For now, convert to string representation
-                Preferences.Set(key, value?.ToString() ?? string.Empty);
+                // Fallback to string representation if reflection fails
+                Preferences.Set(key, value.ToString() ?? string.Empty);
             }
         }
 
