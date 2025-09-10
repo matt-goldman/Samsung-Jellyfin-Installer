@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage x:Class="Samsung_Jellyfin_Installer.DesktopUI.Views.InstallingWindow"
+             xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             Title="Installing">
+    <VerticalStackLayout VerticalOptions="Center" HorizontalOptions="Center">
+        <!-- Using Frame as placeholder for materialDesign:Card -->
+        <Frame Padding="10"
+               BackgroundColor="White"
+               HasShadow="True"
+               CornerRadius="4">
+            <VerticalStackLayout Spacing="10">
+                <Label x:Name="StatusTextBlock" 
+                       Text="Installing Tizen CLI..." 
+                       FontAttributes="Bold" 
+                       HorizontalTextAlignment="Center" />
+                <ProgressBar IsVisible="True" 
+                             HeightRequest="20" 
+                             WidthRequest="250" />
+            </VerticalStackLayout>
+        </Frame>
+    </VerticalStackLayout>
+</ContentPage>

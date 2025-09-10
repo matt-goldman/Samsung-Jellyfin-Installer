@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage x:Class="Samsung_Jellyfin_Installer.DesktopUI.Views.SamsungLoginWindow"
+             xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             Title="Samsung Login">
+    <VerticalStackLayout Padding="20" Spacing="20" VerticalOptions="Center">
+        <Frame BackgroundColor="White"
+               HasShadow="True"
+               CornerRadius="4"
+               Padding="20">
+            <VerticalStackLayout Spacing="20">
+                <Label Text="Samsung Login" 
+                       FontSize="24" 
+                       FontAttributes="Bold"
+                       HorizontalTextAlignment="Center" />
+                
+                <Label Text="Authentication will be implemented using WebAuthenticator for better security." 
+                       HorizontalTextAlignment="Center"
+                       TextColor="Gray" />
+                
+                <Button Text="Login with Samsung" 
+                        BackgroundColor="#FF000B25"
+                        TextColor="White"
+                        CornerRadius="4"
+                        Clicked="LoginButton_Clicked" />
+                
+                <Button Text="Cancel" 
+                        BackgroundColor="Gray"
+                        TextColor="White"
+                        CornerRadius="4"
+                        Clicked="CancelButton_Clicked" />
+            </VerticalStackLayout>
+        </Frame>
+    </VerticalStackLayout>
+</ContentPage>

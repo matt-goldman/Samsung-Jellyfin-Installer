@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage x:Class="Samsung_Jellyfin_Installer.DesktopUI.Views.IpInputDialog"
+             xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             Title="Enter IP Address">
+    <VerticalStackLayout Padding="10" Spacing="10">
+        <Label x:Name="PromptText" />
+        <Entry x:Name="InputBox" 
+               TextColor="#FF000B25" 
+               Keyboard="Numeric" />
+        <HorizontalStackLayout HorizontalOptions="End" Spacing="10">
+            <Button Text="OK" 
+                    WidthRequest="75" 
+                    Clicked="Ok_Click" 
+                    BackgroundColor="#FF000B25" 
+                    TextColor="White" />
+            <Button Text="Cancel" 
+                    WidthRequest="75" 
+                    Clicked="Cancel_Click" 
+                    BackgroundColor="#FF000B25" 
+                    TextColor="White" />
+        </HorizontalStackLayout>
+    </VerticalStackLayout>
+</ContentPage>

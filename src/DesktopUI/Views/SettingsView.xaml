@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage x:Class="Samsung_Jellyfin_Installer.DesktopUI.Views.SettingsView"
+             xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             Title="Settings">
+    <Grid BackgroundColor="#19000B25"> 
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Frame Padding="12" 
+               Margin="0,10,0,0" 
+               BackgroundColor="#FF000B25" 
+               HorizontalOptions="Center" 
+               WidthRequest="505" 
+               VerticalOptions="Start"
+               CornerRadius="4"
+               HasShadow="True">
+            <Label FontSize="16"
+                   FontAttributes="Bold"
+                   HorizontalTextAlignment="Center" 
+                   TextColor="White"
+                   Text="Settings"/>
+        </Frame>
+
+        <VerticalStackLayout Grid.Row="1" Margin="0,0,0,0" VerticalOptions="Start">
+            <Frame Margin="14,0,14,0" 
+                   Padding="10"
+                   BackgroundColor="White"
+                   HasShadow="True"
+                   CornerRadius="4">
+                <Grid Margin="14,0,14,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <!-- Label -->
+                        <ColumnDefinition Width="*" />
+                        <!-- Control -->
+                    </Grid.ColumnDefinitions>
+
+                    <!-- Language -->
+                    <Label Grid.Row="0" Grid.Column="0" 
+                           Text="Language"
+                           VerticalOptions="Center" 
+                           Margin="0,10,12,0"/>
+                    <Picker Grid.Row="0" Grid.Column="1"
+                            ItemsSource="{Binding AvailableLanguages}"
+                            SelectedItem="{Binding SelectedLanguage}"
+                            ItemDisplayBinding="{Binding Name}"
+                            Title="Select Language"
+                            VerticalOptions="Center" 
+                            Margin="0,10,0,0" />
+
+                    <!-- Certificate -->
+                    <Label Grid.Row="1" Grid.Column="0" 
+                           Text="Certificate"
+                           VerticalOptions="Center" 
+                           Margin="0,15,12,0"/>
+                    <Picker Grid.Row="1" Grid.Column="1"
+                            ItemsSource="{Binding AvailableCertificates}"
+                            SelectedItem="{Binding SelectedCertificateObject}"
+                            ItemDisplayBinding="{Binding DisplayText}"
+                            Title="Select Certificate"
+                            VerticalOptions="Center" 
+                            Margin="0,15,0,0"/>
+
+                    <!-- WGT Path -->
+                    <Label Grid.Row="2" Grid.Column="0" 
+                           Text="Custom WGT"
+                           VerticalOptions="Center" 
+                           Margin="0,15,12,0"/>
+
+                    <Grid Grid.Row="2" Grid.Column="1" Margin="0,15,0,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+
+                        <Entry Grid.Column="0"
+                               Text="{Binding CustomWgtPath}"
+                               Placeholder="Select WGT"
+                               VerticalOptions="Center"
+                               IsReadOnly="True"
+                               Margin="0,0,8,0"/>
+
+                        <Button Grid.Column="1"
+                                Command="{Binding BrowseWgtCommand}"
+                                Text="📁"
+                                VerticalOptions="Center"
+                                WidthRequest="30" 
+                                HeightRequest="30"
+                                BackgroundColor="LightGray"
+                                CornerRadius="4" />
+                    </Grid>
+
+                    <!-- Remember IP -->
+                    <Label Grid.Row="3" Grid.Column="0" 
+                           Text="Remember IP"
+                           VerticalOptions="Center" 
+                           Margin="0,15,12,0"/>
+                    <CheckBox Grid.Row="3" Grid.Column="1"
+                              IsChecked="{Binding RememberCustomIP}"
+                              VerticalOptions="Center"
+                              Margin="0,15,0,0" />
+
+                    <!-- Delete Previous -->
+                    <Label Grid.Row="4" Grid.Column="0" 
+                           Text="Delete Previous"
+                           VerticalOptions="Center" 
+                           Margin="0,15,12,0"/>
+                    <CheckBox Grid.Row="4" Grid.Column="1"
+                              IsChecked="{Binding DeletePreviousInstall}"
+                              VerticalOptions="Center"
+                              Margin="0,15,0,0" />
+
+                    <!-- Force Samsung Login -->
+                    <Label Grid.Row="5" Grid.Column="0" 
+                           Text="Force Login"
+                           VerticalOptions="Center" 
+                           Margin="0,15,12,0"/>
+                    <CheckBox Grid.Row="5" Grid.Column="1"
+                              IsChecked="{Binding ForceSamsungLogin}"
+                              VerticalOptions="Center"
+                              Margin="0,15,0,0" />
+
+                    <!-- RTL Reading -->
+                    <Label Grid.Row="6" Grid.Column="0" 
+                           Text="RTL Reading"
+                           VerticalOptions="Center" 
+                           Margin="0,15,12,0"/>
+                    <CheckBox Grid.Row="6" Grid.Column="1"
+                              IsChecked="{Binding RTLReading}"
+                              VerticalOptions="Center"
+                              Margin="0,15,0,0" />
+
+                    <!-- Jellyfin Config -->
+                    <Label Grid.Row="7" Grid.Column="0" 
+                           Text="Jellyfin Config"
+                           VerticalOptions="Center" 
+                           Margin="0,15,12,0"/>
+                    <Button Grid.Row="7" Grid.Column="1"
+                            Text="Open Config"
+                            Command="{Binding ModifyConfigCommand}"
+                            VerticalOptions="Center"
+                            Margin="0,15,0,0"
+                            TextColor="White"
+                            BackgroundColor="#FF000B25"
+                            CornerRadius="4"/>
+                </Grid>
+            </Frame>
+        </VerticalStackLayout>
+    </Grid>
+</ContentPage>

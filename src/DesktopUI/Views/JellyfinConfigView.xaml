@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage x:Class="Samsung_Jellyfin_Installer.DesktopUI.Views.JellyfinConfigView"
+             xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             Title="Jellyfin Config">
+    <Grid BackgroundColor="#19000B25">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Frame Padding="12" 
+               Margin="0,10,0,0" 
+               BackgroundColor="#FF000B25" 
+               HorizontalOptions="Center" 
+               WidthRequest="505" 
+               VerticalOptions="Start"
+               CornerRadius="4"
+               HasShadow="True">
+            <Label FontSize="16"
+                   FontAttributes="Bold"
+                   HorizontalTextAlignment="Center" 
+                   TextColor="White"
+                   Text="Jellyfin Config"/>
+        </Frame>
+
+        <ScrollView Grid.Row="1" Orientation="Vertical">
+            <VerticalStackLayout Margin="0,0,0,20" Spacing="20">
+                
+                <!-- Server Configuration Section -->
+                <Frame Margin="14,0,14,0" 
+                       Padding="10"
+                       BackgroundColor="White"
+                       HasShadow="True"
+                       CornerRadius="4">
+                    <VerticalStackLayout Spacing="10">
+                        <Label Text="Server Settings" 
+                               FontSize="18" 
+                               FontAttributes="Bold"
+                               Margin="0,0,0,10"/>
+
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <!-- Update mode -->
+                            <Label Grid.Row="0" Grid.Column="0" 
+                                   Text="Update Mode"
+                                   VerticalOptions="Center" 
+                                   Margin="0,15,12,0"/>
+                            <Picker Grid.Row="0" Grid.Column="1" 
+                                    Margin="0,15,0,0"
+                                    ItemsSource="{Binding AvailableUpdateModes}"
+                                    SelectedItem="{Binding SelectedUpdateMode}"
+                                    Title="Update Mode"
+                                    VerticalOptions="Center"/>
+                            
+                            <!-- Jellyfin Server -->
+                            <Label Grid.Column="0" Grid.Row="1" 
+                                   Text="Jellyfin Server"
+                                   VerticalOptions="Center" 
+                                   Margin="0,15,12,0"/>
+                            <Grid Grid.Column="1" Grid.Row="1" Margin="0,15,12,0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Entry Grid.Column="0"
+                                       VerticalOptions="Center"
+                                       Text="{Binding JellyfinServerIp}"
+                                       Placeholder="Server IP" />
+                                <Label Grid.Column="1" 
+                                       Text=":" 
+                                       VerticalOptions="Center" 
+                                       Margin="1,0,1,0"/>
+                                <Picker Grid.Column="2"
+                                        VerticalOptions="Center"
+                                        ItemsSource="{Binding JellyfinPorts}"
+                                        SelectedItem="{Binding SelectedJellyfinPort}"
+                                        Title="Port"
+                                        WidthRequest="75" />
+                            </Grid>
+
+                            <!-- Jellyfin API key -->
+                            <Label Grid.Row="2" Grid.Column="0" 
+                                   Text="API Key"
+                                   VerticalOptions="Center" 
+                                   Margin="0,15,12,0"/>
+                            <Entry Grid.Row="2" Grid.Column="1"
+                                   VerticalOptions="Center"
+                                   Text="{Binding JellyfinApiKey}"
+                                   Placeholder="Jellyfin API Key"
+                                   Margin="0,15,0,0" 
+                                   IsEnabled="{Binding ApiKeyEnabled}" />
+
+                            <!-- User Selection -->
+                            <Label Grid.Row="3" Grid.Column="0" 
+                                   Text="Jellyfin User"
+                                   VerticalOptions="Center" 
+                                   Margin="0,15,12,0"/>
+                            <Picker Grid.Row="3" Grid.Column="1" 
+                                    Margin="0,15,0,0"
+                                    ItemsSource="{Binding AvailableJellyfinUsers}"
+                                    SelectedItem="{Binding SelectedJellyfinUser}"
+                                    ItemDisplayBinding="{Binding Name}"
+                                    IsEnabled="{Binding ApiKeySet}"
+                                    Title="Select User"
+                                    VerticalOptions="Center"/>
+                        </Grid>
+                    </VerticalStackLayout>
+                </Frame>
+
+                <!-- Browser Settings Section -->
+                <Frame Margin="14,0,14,0" 
+                       Padding="10"
+                       BackgroundColor="White"
+                       HasShadow="True"
+                       CornerRadius="4">
+                    <VerticalStackLayout IsEnabled="{Binding ApiKeySet}" Spacing="10">
+                        <Label Text="Browser Settings" 
+                               FontSize="18" 
+                               FontAttributes="Bold"
+                               Margin="0,0,0,10"/>
+
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <!-- Theme -->
+                            <Label Grid.Row="0" Grid.Column="0" 
+                                   Text="Theme"
+                                   VerticalOptions="Center" 
+                                   Margin="0,0,12,0"/>
+                            <Picker Grid.Row="0" Grid.Column="1" 
+                                    Margin="0,0,0,0"
+                                    ItemsSource="{Binding AvailableThemes}"
+                                    SelectedItem="{Binding SelectedTheme}"
+                                    Title="Select Theme"
+                                    VerticalOptions="Center"/>
+
+                            <!-- Backdrops -->
+                            <Label Grid.Row="1" Grid.Column="0" 
+                                   Text="Enable Backdrops"
+                                   VerticalOptions="Center" 
+                                   Margin="0,15,12,0"/>
+                            <CheckBox Grid.Row="1" Grid.Column="1"
+                                      IsChecked="{Binding EnableBackdrops}"
+                                      VerticalOptions="Center"
+                                      Margin="0,15,0,0" />
+
+                            <!-- Theme Songs -->
+                            <Label Grid.Row="2" Grid.Column="0" 
+                                   Text="Enable Theme Songs"
+                                   VerticalOptions="Center" 
+                                   Margin="0,15,12,0"/>
+                            <CheckBox Grid.Row="2" Grid.Column="1"
+                                      IsChecked="{Binding EnableThemeSongs}"
+                                      VerticalOptions="Center"
+                                      Margin="0,15,0,0" />
+
+                            <!-- Theme Videos -->
+                            <Label Grid.Row="3" Grid.Column="0" 
+                                   Text="Enable Theme Videos"
+                                   VerticalOptions="Center" 
+                                   Margin="0,15,12,0"/>
+                            <CheckBox Grid.Row="3" Grid.Column="1"
+                                      IsChecked="{Binding EnableThemeVideos}"
+                                      VerticalOptions="Center"
+                                      Margin="0,15,0,0" />
+
+                            <!-- Backdrop Screensaver -->
+                            <Label Grid.Row="4" Grid.Column="0" 
+                                   Text="Backdrop Screensaver"
+                                   VerticalOptions="Center" 
+                                   Margin="0,15,12,0"/>
+                            <CheckBox Grid.Row="4" Grid.Column="1"
+                                      IsChecked="{Binding BackdropScreensaver}"
+                                      VerticalOptions="Center"
+                                      Margin="0,15,0,0" />
+
+                            <!-- Details Banner -->
+                            <Label Grid.Row="5" Grid.Column="0" 
+                                   Text="Details Banner"
+                                   VerticalOptions="Center" 
+                                   Margin="0,15,12,0"/>
+                            <CheckBox Grid.Row="5" Grid.Column="1"
+                                      IsChecked="{Binding DetailsBanner}"
+                                      VerticalOptions="Center"
+                                      Margin="0,15,0,0" />
+
+                            <!-- Cinema Mode -->
+                            <Label Grid.Row="6" Grid.Column="0" 
+                                   Text="Cinema Mode"
+                                   VerticalOptions="Center" 
+                                   Margin="0,15,12,0"/>
+                            <CheckBox Grid.Row="6" Grid.Column="1"
+                                      IsChecked="{Binding CinemaMode}"
+                                      VerticalOptions="Center"
+                                      Margin="0,15,0,0" />
+                        </Grid>
+                    </VerticalStackLayout>
+                </Frame>
+
+                <!-- Additional sections can be added here following the same pattern -->
+                <!-- For now, using placeholder for complex sections -->
+                <Frame Margin="14,0,14,0" 
+                       Padding="10"
+                       BackgroundColor="White"
+                       HasShadow="True"
+                       CornerRadius="4">
+                    <VerticalStackLayout Spacing="10">
+                        <Label Text="Additional Settings" 
+                               FontSize="18" 
+                               FontAttributes="Bold"
+                               Margin="0,0,0,10"/>
+                        <Label Text="More configuration options will be implemented here..." 
+                               HorizontalTextAlignment="Center"
+                               TextColor="Gray" />
+                    </VerticalStackLayout>
+                </Frame>
+
+            </VerticalStackLayout>
+        </ScrollView>
+    </Grid>
+</ContentPage>

@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage x:Class="Samsung_Jellyfin_Installer.DesktopUI.Views.MainWindow"
+             xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             Title="Jellyfin 2 Samsung">
+    <Border BackgroundColor="#19000B25" Padding="14">
+        <!-- Using Frame as placeholder for materialDesign:Card -->
+        <Frame Margin="5,0,5,0"
+               BackgroundColor="White"
+               HasShadow="True"
+               CornerRadius="4">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <!-- Header -->
+                    <RowDefinition Height="10" />
+                    <!-- Spacing -->
+                    <RowDefinition Height="*" />
+                    <!-- Form Content -->
+                    <RowDefinition Height="Auto" />
+                    <!-- Status Bar -->
+                    <RowDefinition Height="20" />
+                    <!-- Spacing -->
+                    <RowDefinition Height="Auto" />
+                    <!-- Button -->
+                    <RowDefinition Height="10" />
+                    <!-- Spacing -->
+                    <RowDefinition Height="Auto" />
+                    <!-- Copyright -->
+                </Grid.RowDefinitions>
+
+                <!-- Header -->
+                <Frame Grid.Row="0"
+                       Padding="12"
+                       BackgroundColor="#FF000B25"
+                       CornerRadius="4"
+                       HasShadow="True">
+                    <Label FontSize="20"
+                           FontAttributes="Bold"
+                           HorizontalTextAlignment="Center"
+                           TextColor="White"
+                           Text="Jellyfin Installer for Samsung (Tizen)" />
+                </Frame>
+
+                <!-- Form Content -->
+                <VerticalStackLayout Grid.Row="2" Margin="10,0,10,0" Spacing="15">
+
+                    <!-- Release Selection -->
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <!-- Label -->
+                            <ColumnDefinition Width="Auto" />
+                            <!-- Picker -->
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <Label Grid.Column="0" 
+                               Margin="0,0,12,0"
+                               Text="Release:"
+                               VerticalOptions="Center" />
+                        <Picker Grid.Column="1"
+                                ItemsSource="{Binding Releases}"
+                                SelectedItem="{Binding SelectedRelease}"
+                                ItemDisplayBinding="{Binding Name}"
+                                Title="Choose Release"
+                                VerticalOptions="Center" />
+                    </Grid>
+
+                    <!-- Version Selection -->
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <Label Grid.Column="0" 
+                               Margin="0,0,12,0"
+                               Text="Version:"
+                               VerticalOptions="Center" />
+                        <Picker Grid.Column="1"
+                                ItemsSource="{Binding AvailableAssets}"
+                                SelectedItem="{Binding SelectedAsset}"
+                                ItemDisplayBinding="{Binding DisplayText}"
+                                Title="Choose Version"
+                                VerticalOptions="Center" />
+                    </Grid>
+
+                    <!-- TV Selection -->
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+
+                        <Label Grid.Column="0" 
+                               Margin="0,0,12,0"
+                               Text="Select TV:"
+                               VerticalOptions="Center" />
+                        <Picker Grid.Column="1"
+                                ItemsSource="{Binding AvailableDevices}"
+                                SelectedItem="{Binding SelectedDevice}"
+                                ItemDisplayBinding="{Binding DisplayText}"
+                                Title="Choose TV"
+                                VerticalOptions="Center"
+                                IsEnabled="{Binding EnableDevicesInput}"
+                                Margin="0,0,10,0" />
+                        <Button Grid.Column="2"
+                                Command="{Binding RefreshDevicesCommand}"
+                                Text="🔄"
+                                HeightRequest="25" 
+                                WidthRequest="25"
+                                VerticalOptions="Center"
+                                IsEnabled="{Binding EnableDevicesInput}"
+                                BackgroundColor="#FF000B25"
+                                TextColor="White"
+                                CornerRadius="12" />
+                    </Grid>
+                </VerticalStackLayout>
+
+                <!-- Status Bar -->
+                <Frame Grid.Row="3"
+                       Padding="12"
+                       BackgroundColor="#FF000B25"
+                       CornerRadius="4"
+                       HasShadow="True">
+                    <Label Text="{Binding StatusBar}"
+                           FontSize="16"
+                           FontAttributes="Bold"
+                           HorizontalTextAlignment="Center"
+                           TextColor="White" />
+                </Frame>
+
+                <!-- Main Button -->
+                <Grid Margin="0,0,0,0" Grid.Row="5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="4*" />
+                        <ColumnDefinition Width="0.4*" />
+                    </Grid.ColumnDefinitions>
+
+                    <Button Grid.Column="0"
+                            Command="{Binding DownloadAndInstallCommand}" 
+                            CommandParameter="{Binding SelectedRelease}"
+                            Text="Download and Install"
+                            BackgroundColor="#FF000B25"
+                            TextColor="White"
+                            HorizontalOptions="Center"
+                            MinimumWidthRequest="300"
+                            CornerRadius="4" />
+
+                    <Button Grid.Column="1"
+                            Command="{Binding OpenSettingsCommand}"
+                            Text="⚙️"
+                            HeightRequest="26" 
+                            WidthRequest="25"
+                            VerticalOptions="Center"
+                            BackgroundColor="#FF000B25"
+                            TextColor="White"
+                            CornerRadius="12" />
+                </Grid>
+
+                <!-- Copyright -->
+                <Label Grid.Row="7" 
+                       FontSize="12" 
+                       HorizontalTextAlignment="Center"
+                       Padding="0,0,0,5">
+                    <!-- Using Label as placeholder for Hyperlink -->
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="Hyperlink_Tapped" />
+                    </Label.GestureRecognizers>
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="{Binding FooterText}" 
+                                  TextColor="#FF000B25"
+                                  TextDecorations="Underline" />
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+            </Grid>
+        </Frame>
+    </Border>
+</ContentPage>

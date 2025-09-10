@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage x:Class="Samsung_Jellyfin_Installer.DesktopUI.Views.InstallationCompleteWindow"
+             xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             Title="Installation Successful">
+    <Grid BackgroundColor="#19000B25">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="295*"/>
+            <ColumnDefinition Width="74*"/>
+        </Grid.ColumnDefinitions>
+        
+        <!-- Using Frame as placeholder for materialDesign:Card -->
+        <Frame Margin="15" 
+               Padding="10" 
+               Grid.ColumnSpan="2"
+               BackgroundColor="White"
+               HasShadow="True"
+               CornerRadius="4">
+            <VerticalStackLayout Margin="20" HorizontalOptions="Center">
+                <VerticalStackLayout>
+                    <Label Text="✅" 
+                           FontSize="36" 
+                           HorizontalTextAlignment="Center" />
+                    <Label x:Name="MessageText"
+                           FontSize="16"
+                           HorizontalTextAlignment="Center"
+                           Margin="0,10,0,15" 
+                           Text="Installation Successful" />
+                    <Label x:Name="ValidationRule"
+                           HorizontalTextAlignment="Center"
+                           Margin="0,0,0,15" 
+                           Text="Easy Right?" />
+                </VerticalStackLayout>
+                <HorizontalStackLayout Spacing="5">
+                    <!-- Ko-fi Button -->
+                    <Button BackgroundColor="#FF000B25"
+                            TextColor="White"
+                            Margin="10,5,15,10"
+                            Clicked="Validation_Click"
+                            Text="Validation"
+                            CornerRadius="4" />
+
+                    <!-- Close Button -->
+                    <Button Text="Close"
+                            Margin="10,5,5,10"
+                            BackgroundColor="#FF000B25" 
+                            TextColor="White"
+                            Clicked="CloseButton_Click"
+                            WidthRequest="80"
+                            CornerRadius="4" />
+                </HorizontalStackLayout>
+            </VerticalStackLayout>
+        </Frame>
+    </Grid>
+</ContentPage>
